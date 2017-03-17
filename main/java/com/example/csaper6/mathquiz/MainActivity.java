@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,14 +16,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button answerA,answerB,answerC,answerD;
     private TextView question,score,time;
     private String equation, type;
-    private Integer buttonWithAnswer;
-    private Integer marginError;
+    private int buttonWithAnswer, points;
+    private int marginError;
+    private int i = -1;
+    private ArrayList<String> equations = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize what the operation is and what is the equation
         type = "simplify";
-        equation = "5*8";
+        equation = "6+9";
         marginError = 10;
+        equations.add("simplify");
+        equations.add("6+9");
+        equations.add("simplify");
+        equations.add("7+9");
 
         //Wiring
         answerA = (Button) findViewById(R.id.answerA);
@@ -50,6 +58,47 @@ public class MainActivity extends AppCompatActivity {
         //Set the button with answer (Button with the answer is in )
         getAnswer(type, equation);
 
+        //Add score +1 if correct
+        answerA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (buttonWithAnswer == 1)
+                {
+                    points++;
+                    score.setText("Score: " + points);
+                }
+            }
+        });
+        answerB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (buttonWithAnswer == 2)
+                {
+                    points++;
+                    score.setText("Score: " + points);
+                }
+            }
+        });
+        answerC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (buttonWithAnswer == 3)
+                {
+                    points++;
+                    score.setText("Score: " + points);
+                }
+            }
+        });
+        answerD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (buttonWithAnswer == 4)
+                {
+                    points++;
+                    score.setText("Score: " + points);
+                }
+            }
+        });
     }
 
     private void getAnswer(String endpoint, String equation) {
