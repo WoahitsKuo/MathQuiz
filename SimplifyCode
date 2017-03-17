@@ -1,0 +1,43 @@
+
+/**
+ * Write a description of class equations here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class equations
+{
+
+    private int a, b, c, d, e, operator;
+
+    private String question; 
+    private String operator1;
+    public String equations()
+    {
+
+        a = (int)(Math.random() * 10);
+        b = (int)(Math.random() * 10);
+        c = (int)(Math.random() * 10);
+        d = (int)(Math.random() * 10);
+        e = (int)(Math.random() * 10);
+        operator = (int)(Math.random() * 10);
+        
+        if (operator >= 5)
+        {
+            operator1 = "+";
+            
+        }
+        else if (operator < 5)
+        {
+            operator1 = "-";
+        }
+        
+
+        question = a + "^" + b + operator1 + c + "(" + d + ")"; 
+
+        return question;
+
+    }
+}
+
+
